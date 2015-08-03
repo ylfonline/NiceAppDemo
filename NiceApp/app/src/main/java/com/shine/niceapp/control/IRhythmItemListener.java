@@ -1,9 +1,11 @@
 package com.shine.niceapp.control;
 
-public abstract interface IRhythmItemListener {
-    public abstract void onRhythmItemChanged(int paramInt);
+public interface IRhythmItemListener {
 
-    public abstract void onSelected(int paramInt);
+    void onRhythmItemChanged(int paramInt);
 
-    public abstract void onStartSwipe();
+    void onSelected(int paramInt);
+
+    void onStartSwipe();
+
 }

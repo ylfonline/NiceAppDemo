@@ -23,10 +23,8 @@ import com.shine.niceapp.control.RhythmAdapter;
 import com.shine.niceapp.control.RhythmLayout;
 import com.shine.niceapp.control.ViewPagerScroller;
 import com.shine.niceapp.ui.adapter.CardPagerAdapter;
-import com.shine.niceapp.ui.widget.ProgressHUD;
 import com.shine.niceapp.utils.AnimatorUtils;
-import com.shine.niceapp.utils.HexUtils;
-import com.shine.niceapp.utils.NetWorkHelper;
+import com.shine.niceapp.utils.AppUtils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -74,14 +72,10 @@ public class CardViewPagerFragment extends AbsBaseFragment implements PullToRefr
 
     private boolean mIsRequesting;
 
-    private boolean isAdapterUpdated;
-
     private int mCurrentViewPagerPage;
 
 
     private List<Card> mCardList;
-
-    private ProgressHUD mProgressHUD;
 
     /**
      * 钢琴布局的适配器
@@ -117,7 +111,7 @@ public class CardViewPagerFragment extends AbsBaseFragment implements PullToRefr
 
         public void onPageSelected(int position) {
             onAppPagerChange(position);
-            if (mHasNext && (position > -10 + mCardList.size()) && !mIsRequesting && NetWorkHelper.isWifiDataEnable(getActivity())) {
+            if (mHasNext && (position > -10 + mCardList.size()) && !mIsRequesting && AppUtils.isWifiDataEnable(getActivity())) {
                 fetchData();
             }
         }
@@ -208,7 +202,7 @@ public class CardViewPagerFragment extends AbsBaseFragment implements PullToRefr
         toggleRocketBtn(position);
         Card post = this.mCardList.get(position);
         //得到当前的背景颜色
-        int currColor = HexUtils.getHexColor(post.getBackgroundColor());
+        int currColor = AppUtils.getHexColor(post.getBackgroundColor());
         //执行颜色转换动画
         AnimatorUtils.showBackgroundColorAnimation(this.mMainView, mPreColor, currColor, 400);
         mPreColor = currColor;
@@ -232,7 +226,7 @@ public class CardViewPagerFragment extends AbsBaseFragment implements PullToRefr
             Card card = addData(m);
             cardList.add(card);
         }
-        mPreColor = HexUtils.getHexColor(cardList.get(0).getBackgroundColor());
+        mPreColor = AppUtils.getHexColor(cardList.get(0).getBackgroundColor());
         updateAppAdapter(cardList);
     }
 
@@ -240,10 +234,6 @@ public class CardViewPagerFragment extends AbsBaseFragment implements PullToRefr
     private void updateAppAdapter(List<Card> cardList) {
         if ((getActivity() == null) || (getActivity().isFinishing())) {
             return;
-        }
-        if (mProgressHUD != null && mProgressHUD.isShowing()) {
-            this.mProgressHUD.dismiss();
-            this.isAdapterUpdated = true;
         }
         if (cardList.isEmpty()) {
             this.mMainView.setBackgroundColor(this.mPreColor);

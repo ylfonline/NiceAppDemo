@@ -127,7 +127,6 @@ public class RhythmLayout extends HorizontalScrollView {
         }
     }
 
-
     public void invalidateData() {
         int childCount = this.mLinearLayout.getChildCount();
         if (childCount < this.mAdapter.getCount())
@@ -161,7 +160,6 @@ public class RhythmLayout extends HorizontalScrollView {
                 actionUp();
                 break;
         }
-
         return true;
     }
 
@@ -234,7 +232,6 @@ public class RhythmLayout extends HorizontalScrollView {
         }
 
     }
-
 
     /**
      * 得到当前可见的7个小图标

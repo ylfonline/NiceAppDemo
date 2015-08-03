@@ -4,8 +4,7 @@ import android.content.Context;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
-public class ViewPagerScroller extends Scroller
-{
+public class ViewPagerScroller extends Scroller {
     private int mDuration;
 
     public ViewPagerScroller(Context paramContext)
@@ -13,18 +12,15 @@ public class ViewPagerScroller extends Scroller
         super(paramContext);
     }
 
-    public ViewPagerScroller(Context paramContext, Interpolator paramInterpolator)
-    {
+    public ViewPagerScroller(Context paramContext, Interpolator paramInterpolator) {
         super(paramContext, paramInterpolator);
     }
 
-    public ViewPagerScroller(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
-    {
+    public ViewPagerScroller(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean) {
         super(paramContext, paramInterpolator, paramBoolean);
     }
 
-    public void setDuration(int paramInt)
-    {
+    public void setDuration(int paramInt) {
         this.mDuration = paramInt;
     }
 

@@ -3,8 +3,6 @@ package com.shine.niceapp.bean;
 import java.io.Serializable;
 
 public class Card implements Serializable {
-    private static final long serialVersionUID = -5376313495678563362L;
-
     private int id;
 
     private int uid;

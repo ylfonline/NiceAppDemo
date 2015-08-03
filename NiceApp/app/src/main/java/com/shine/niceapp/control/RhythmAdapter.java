@@ -55,14 +55,15 @@ public class RhythmAdapter extends BaseAdapter {
         return this.mCardList.get(position);
     }
 
-    public long getItemId(int paramInt) {
-        return (this.mCardList.get(paramInt)).getUid();
+    public long getItemId(int position) {
+        return position;
     }
 
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         RelativeLayout relativeLayout = (RelativeLayout) this.mInflater.inflate(R.layout.adapter_rhythm_icon, null);
+
         //设置item布局的大小以及Y轴的位置
         relativeLayout.setLayoutParams(new RelativeLayout.LayoutParams((int) itemWidth, mContext.getResources().getDimensionPixelSize(R.dimen.rhythm_item_height)));
         relativeLayout.setTranslationY(itemWidth);
